@@ -4,7 +4,6 @@ body {color: #333;}
     width: 1200px;
     margin: 0 auto;
 }
-.wrap::after {content: ""; display: block; clear: both;}
 
 /* header */
 #quickBanner {
@@ -111,13 +110,13 @@ body {color: #333;}
 }
 
 
-/* side_bar */
+/* container */
+#container::after {content: ""; display: block; clear: both;}
 #side_bar {
     float: left; 
     width: 200px;
 }
 /* -------------------- side_menu -------------------- */
-
 #side_menu > li {font-size: 15px;}
 
 #side_menu > li > a {
@@ -125,15 +124,15 @@ body {color: #333;}
     text-decoration: none;
     display: block;
     padding: 20px 25px;
-    
+
     position: relative;
 }
 
 #side_menu > li > a > span {
-    font-size: 12px;
+    font-size: 18px;
     
     position: absolute;
-    top: 50%; right: 20px;
+    top: 50%; right: 15px;
     transform: translateY(-50%);
 }
 
@@ -149,10 +148,7 @@ body {color: #333;}
     background-color: #ddd; 
     display: none;
 }
-.side_submenu > li {
-    font-size: 13px;
-    font-weight: normal;
-}
+.side_submenu > li {font-size: 13px;}
 
 .side_submenu > li > a {
     color: inherit;
@@ -171,8 +167,6 @@ body {color: #333;}
 #content {
     float: right;
     width: 1000px;
-
-    /* position: relative; */
 }
 
 #content > h1 {
@@ -186,61 +180,113 @@ body {color: #333;}
 }
 
 
-/* -------------------- coffee_menu -------------------- */
-.coffee_menu::after {content: ""; display: block; clear: both;}
-.coffee_menu {margin-bottom: 20px;}
-
+#coffee_menu::after {content: ""; display: block; clear: both;}
+/* -------------------- coffee -------------------- */
 .coffee {
     float: left;
-    width: 320px;
-    height: 400px;
     background-color: #f5f5f5;
-    padding-top: 50px;
-
+    margin-bottom: 20px;
+    
     position: relative; /* coffee_info로 인한 position */
 }
 .coffee:nth-child(2), .coffee:nth-child(5) {margin: 0 20px;}
 
-.coffee > img {width: 100%;}
-.coffee > p {
+
+/* -------------------- coffee_img -------------------- */
+.coffee_img {
+    width: 320px;
+    height: 450px;
+    cursor: pointer;
+}
+.coffee_img > img {width: 100%; padding-top: 50px;}
+.coffee_img > p {
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
+}
+
+/* -------------------- close -------------------- */
+.close {
+    position: absolute;
+    top: 5%; right: 5%;
 }
 
 
 /* -------------------- coffee_info -------------------- */
 .coffee_info {
     position: absolute; 
-    top: 0; left: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
 
-    background-color: rgba(255, 182, 182, 0.8); /*만들고 난 뒤에 rgba(255, 255, 255, 0.8) 바꾸기*/
+    background-color: rgba(252, 252, 252, 0.9);
+    display: none;
 }
+
 .coffee_info::after {content: ""; display: block; clear: both;}
 
-.coffee_info > p {text-align: center;}
-.coffee_info > p:nth-child(1) {font-size: 20px; padding-top: 35px;}
-.coffee_info > p:nth-child(2) {color: #999; font-size: 15px; line-height: 30px;}
-.coffee_info > p:nth-child(3) {}
-.coffee_info > p:nth-child(4) {}
+.coffee_info > p {
+    text-align: center;
+    line-height: 20px;
+}
+.coffee_info > p:nth-child(2) {
+    font-size: 20px; 
+    padding-top: 60px;
+}
+.coffee_info > p:nth-child(3) {
+    color: #999; 
+    font-size: 15px; 
+    line-height: 30px;
+}
+.coffee_info > p:nth-child(6) {padding-top: 15px}
 
-.coffee_info > hr {width: 80%; margin: 20px auto;}
+.coffee_info > hr {width: 80%; margin: 25px auto;}
 
 .coffee_info > ul {
-    width: 50%; 
-    float: left;
-    padding: 12px 0;
-    background-color: #888; /*만들고 난 뒤에 색#f5f5f5로 바꾸기*/
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    
+    position: absolute;
+    bottom: 0; left: 0;
 }
+.coffee_info > ul::after {content: ""; display: block; clear: both;}
+
 .coffee_info > ul > li {
-    text-align: left;
+    width: 150px; /* 총 width: 160px에서 왼쪽 여백을 주기위해 -10px*/
+    padding-left: 10px;
     line-height: 30px;
-    padding-left: 10px; 
+    float: left;
+}
+
+
+/* -------------------- more -------------------- */
+#more {
+    margin: 120px auto;
+    display: block;
+    font-size: 18px;
+    border: 1px solid #ba000c;
+    border-radius: 22px 22px 22px 22px;
+    padding: 12px 50px;
+    cursor: pointer;
+    background-color: white;
+    outline: none;
+}
+#more > span {padding-left: 15px;}
+#more:hover {
+    background-color: #ba000c; 
+    color: white; 
+    transition-duration: 0.15s;
+}
+
+
+/* -------------------- topButton -------------------- */
+#top_button {
+    position: fixed;
+    right: 4%; bottom: 6%;
+    display: none;
 }
 
 
 /* footer */
 #footer {
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: #333;
     padding: 40px;
 }

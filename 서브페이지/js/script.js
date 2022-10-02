@@ -1,4 +1,22 @@
 $(function () {
+    // top버튼
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+            $("#top_button").fadeIn();
+        } else {
+            $("#top_button").fadeOut();
+        };
+    });
+
+    $("#top_button").click(function () {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 300);
+        return false;
+    });
+
+
+    // ---------------------------------------------------------
     // 서브메뉴
     var $submenuBg = $("#submenu_bg");
     var $submenus = $(".submenu");
@@ -25,21 +43,25 @@ $(function () {
 
     // ---------------------------------------------------------
     // 사이드메뉴
-    // $(".side_submenu > li > a").on("click", function () {
-    //     $(".side_submenu > li > a > span").innerText = '∨'
-    // });
+    $("#side_menu > li > a").click(function () {
+        $(this).next().slideDown();
+        $(this).children('span').text("-");
+    }); 
     
-    // $(".side_submenu > li > a").click(function () {
-    // $(".side_submenu > li > a > span").text("∧");
-    
-    $sideSubMenuS = $(".side_submenu > li > a > span");
-    
-    $(".side_submenu > li > a").click(function() {
-        if (sideSubMenuS === "∨") {
-            sideSubMenuS.text("∧");
-        } else if (sideSubMenuS === "∧") {
-            sideSubMenuS.text("∨");
-        }
+    $("#side_menu > li").mouseleave(function () {
+        $(".side_submenu").slideUp();
+        $("#side_menu > li > a > span").text("+");
     });
 
+    
+    // ---------------------------------------------------------
+    // 클릭 시 커피 제품정보 보이기 & 닫기
+    $(".coffee_img").click(function () {
+        $(this).next().fadeIn();
+    });
+
+    $(".close").click(function () {
+        $(this).parent().fadeOut();
+    });
+            
 }); // document.onready
