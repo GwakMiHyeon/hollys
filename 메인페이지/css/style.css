@@ -228,19 +228,29 @@ body {color: #333}
     bottom: 20px; left: 50%;
     transform: translateX(-50%);
 }
-#indicator > a {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
+#indicator::after {content: ""; display: block; clear: both;}
+
+#indicator > li {
+    float: left;
+    margin: 0 3px;
+
+    width: 16px;
+    height: 16px;
     border: 3px solid white;
     border-radius: 50%;
+    opacity: 0.3;
+    transition-duration: 400ms;
+    cursor: pointer;
 }
-.on {
-    width: 15px;
-    height: 15px;
+#indicator > li:hover {opacity: 1;}
+
+#indicator > li.on {
+    opacity: 1;
     background-color: white;
-    border-radius: 50%;
+    cursor: default;
 }
+
+#indicator > li > span {display: none;}
 
 
 /* -------------------- notice -------------------- */
@@ -260,7 +270,7 @@ body {color: #333}
 }
 .notice > p:nth-child(1) {
     padding-left: 30px;
-    background: url(../images/notice_black.png) no-repeat;
+    background: url(../images/notice_icon.png) no-repeat;
 }
 .notice > p:nth-child(2) {float: right;}
 

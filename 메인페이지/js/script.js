@@ -58,8 +58,7 @@ $(function () {
 
     // 이전 슬라이드
     $("#imgSlide > button:nth-child(2)").on("click", function () {
-        $slide.prepend( $slide.children(":last") )
-        .css("margin-left", "-100%").animate({"margin-left": 0});
+        $slide.prepend($slide.children(":last")).css("margin-left", "-100%").animate({"margin-left": 0});
     });
 
     // 다음 슬라이드
@@ -75,39 +74,69 @@ $(function () {
 
     // ----------------------------------------------------------------------------
     // 이벤트 배너
-    var $eventslide = $("#eventBanner > ul").length;
+    var $eventBanners = $("#eventBanner > ul");
+    var bannerIndex = 0;
+    var bannerLength = $eventBanners.children().length;
 
-    var timerId = window.setInterval(eventSlideImage, 3000);
+    var timerId = window.setInterval(bannerSlideImage, 3000);
 
-    var $indicator = $("#indicator > a");
-    var slideIndex = 1;
-    var indicatorIndex = 0;
-
+    // #eventBanner에 호버되면 정지 & 벗어나면 재생
     $("#eventBanner").hover(
         function () {
             window.clearInterval(timerId);
         },
         function () {
-            timerId = window.setInterval(eventSlideImage, 3000);
+            timerId = window.setInterval(bannerSlideImage, 3000);
         }
     );
     
-    // ----------------------------------------------------------------------
-    $indicator.on("click", function (event) {
-        event.preventDefault();
-        
-        slideIndex = $eventslide.children().index(this);
-        indicatorIndex = $indicator.index(this);
-        slideIndex = indicatorIndex;
-        
-        $(this).addClass("on").siblings().removeClass("on");
-        $eventslide.addClass("on").siblings().removeClass("on");
+    // 인디케이터
+    // #eventBanner > ul의 li갯수만큼 인디케이터 li를 생성
+    var $indicator = $("<ol></ol>").attr("id", "indicator");
+
+    $eventBanners.children().each(function (index) {
+        $("<li></li>").appendTo("<span>" + (index + 1) + "</span>").appendTo($indicator);
     });
-    
-    // ----------------------------------------------------------------------
-    function eventSlideImage () {
-        $eventslide.animate({"margin-left": "-100%"}, function () {
-            $eventslide.removeAttr("style").children(":first").appendTo($eventslide);
+
+    $indicator.appendTo("#eventBanner");
+    $indicator.children(":first").addClass("on");
+
+    // #indicator요소의 li를 클릭하면
+    $indicator.children().on("click", function () {
+        // #eventBanner에 표시되고 있는 이미지 = li를 클릭한 경우 이벤트 핸들러 종료
+        if ($(this).is(".on")) return;
+
+        var indicatorIndex = $indicator.children().index(this);
+
+        // #eventBanner이미지와의 인덱스 차이
+        var step = indicatorIndex - bannerIndex;
+
+        // 왼쪽으로만 이동하도록 만들기 위해 변수step이 음수이면 bannerLength를 변경
+        if (step < 0) step += bannerLength;
+        
+        // #bannerIndex요소의 영역에 표시되는 이미지가 바뀌므로 변수 indicatorIndex를 변경
+        bannerIndex = indicatorIndex;
+
+        // #indicator요소에서 강조되는 요소를 변경
+        // $indicator.children().removeClass("on").eq(bannerIndex).addClass("on");
+        $indicator.children().removeClass("on");
+        $(this).addClass("on");
+
+        // #eventBanner > ul 요소를 위에서 계산 칸만큼 왼쪽으로 이동시킨다.
+        $eventBanners.animate({"margin-left" : step * -100 + "%"}, function () {
+            $eventBanners.removeAttr("style").children(":lt(" + step + ")").appendTo($eventBanners);
+        });
+    });
+
+    // bannerSlideImage의 편한 사용을 위해 따로 지정
+    function bannerSlideImage () {
+        bannerIndex++;
+        bannerIndex %= bannerLength;
+
+        $indicator.children().removeClass("on").eq(bannerIndex).addClass("on")
+
+        $eventBanners.animate({"margin-left": "-100%"}, function () {
+            $(this).removeAttr("style").children(":first").appendTo(this);
         });
     }
 
