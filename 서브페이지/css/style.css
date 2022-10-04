@@ -111,7 +111,9 @@ body {color: #333;}
 
 
 /* container */
+#container {overflow: hidden;}
 #container::after {content: ""; display: block; clear: both;}
+
 #side_bar {
     float: left; 
     width: 200px;
@@ -120,7 +122,7 @@ body {color: #333;}
 #side_menu > li {font-size: 15px;}
 
 #side_menu > li > a {
-    color: inherit;
+    color: #333;
     text-decoration: none;
     display: block;
     padding: 20px 25px;
@@ -142,6 +144,7 @@ body {color: #333;}
     transition-duration: 0.13s;
     font-weight: bold;
 }
+#side_menu > li:hover > a {background-color: #999; color: white;}
 
 /* -------------------- side_submenu -------------------- */
 .side_submenu {
@@ -160,14 +163,17 @@ body {color: #333;}
 .side_submenu > li > a:hover {
     color: white;
     background-color: #ba000c;
+    font-weight: bold;
 }
 
 
 /* content */
-#content {
-    float: right;
-    width: 1000px;
+#wrap_content {
+    float: left;
+    margin-right: -200px;
+    width: 100%;
 }
+#content {margin-right: 200px;}
 
 #content > h1 {
     font-weight: bold;

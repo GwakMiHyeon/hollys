@@ -43,16 +43,34 @@ $(function () {
 
     // ---------------------------------------------------------
     // 사이드메뉴
-    $("#side_menu > li > a").click(function () {
-        $(this).next().slideDown();
-        $(this).children('span').text("-");
-    }); 
-    
-    $("#side_menu > li").mouseleave(function () {
-        $(".side_submenu").slideUp();
-        $("#side_menu > li > a > span").text("+");
-    });
+    window.addEventListener("load", function () {
+        var menuItems = document.getElementsByClassName("menu-item");
+        var sideMenus = document.getElementsByClassName("side_submenu");
+        
+        // 1. .menu-item 요소를 클릭하면
+        //      → .menu-item 요소에 click 이벤트 핸들러를 연결
+        for (var i = 0; i < menuItems.length; i++)
+        
+        menuItems[i].addEventListener("click", function (event) {
+            // 기본 이벤트 제거
+            event.preventDefault();
+            
+            // click 이벤트가 발생한 요소의 다음에 나오는 .sideSubmenu 요소
+            var sideSubmenu = this.nextElementSibling;
 
+            //  2. 그 다음에 나오는 .sideSubmenu 요소가 화면에 표시된 상태이면
+            if (sideSubmenu.style.display == "block") {
+                // 2.1. 그 다음에 나오는 .sideSubmenu 요소를 화면에서 숨긴다. 
+                sideSubmenu.removeAttribute("style");
+            } else {
+                // 3.1. 이전에 화면에 표시된 .sideSubmenu 요소를 화면에 숨기고
+                //      → 반복문을 이용해 배열 sideMenus의 각 원소들을 확인
+                for (var i = 0; i < sideMenus.length; i++)
+                sideMenus[i].removeAttribute("style");
+                sideSubmenu.style.display = "block";
+            }
+        });
+    });
     
     // ---------------------------------------------------------
     // 클릭 시 커피 제품정보 보이기 & 닫기
