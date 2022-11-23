@@ -137,6 +137,7 @@ body {color: #333;}
     top: 50%; right: 15px;
     transform: translateY(-50%);
 }
+.minus {display: none;}
 
 #side_menu > li > a:hover {
     color: white;
