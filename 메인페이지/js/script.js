@@ -44,31 +44,57 @@ $(function () {
     // ----------------------------------------------------------------------------
     // 이미지 슬라이드
     var $slide = $("#slide");
-    var timerId = window.setInterval(slideImage, 3000);
-
-    // 슬라이드가 호버되면 움직이지 않음
+    
+    var timerId = window.setInterval(slideImg, 3000);
+    
     $("#imgSlide").hover(
         function () {
-            window.clearInterval(timerId);
+            window.clearInterval(timerId)
         },
+        
         function () {
-            timerId = window.setInterval(slideImage, 3000);
+            timerId = window.setInterval(slideImg, 3000);
         }
     );
 
-    // 이전 슬라이드
-    $("#imgSlide > button:nth-child(2)").on("click", function () {
+    // prev 버튼
+    $("#prev").on("click", function () {
         $slide.prepend($slide.children(":last")).css("margin-left", "-100%").animate({"margin-left": 0});
     });
 
-    // 다음 슬라이드
-    $("#imgSlide > button:nth-child(3)").on("click", slideImage);
-    
-    // slideImage
-    function slideImage() {
-        $slide.animate({"margin-left": "-100%"}, function() {
+    // next 버튼
+    $("#next").on("click", slideImg);
+
+    // slideImg
+    function slideImg() {
+        $slide.css({"margin-left": "-100%", "transition-duration": "400ms"});
+        
+        window.setTimeout(function () {
             $slide.removeAttr("style").children(":first").appendTo($slide);
-        });
+        }, 400);
+    }
+    
+    // ----------------------------------------------------------------------------
+    // 모바일 이미지 슬라이드
+    var $mobileSlide = $("#mobile_slide");
+
+    var timerId = window.setInterval(mobileSlideImg, 3000);
+    
+    // prev 버튼
+    $("#prev").on("click", function () {
+        $mobileSlide.prepend($mobileSlide.children(":last")).css("margin-left", "-100%").animate({"margin-left": 0});
+    });
+
+    // next 버튼
+    $("#next").on("click", mobileSlideImg);
+
+    // slideImg
+    function mobileSlideImg() {
+        $mobileSlide.css({"margin-left": "-100%", "transition-duration": "400ms"});
+        
+        window.setTimeout(function () {
+            $mobileSlide.removeAttr("style").children(":first").appendTo($mobileSlide);
+        }, 400);
     }
 
 
@@ -80,7 +106,6 @@ $(function () {
 
     var timerId = window.setInterval(bannerSlideImage, 3000);
 
-    // #eventBanner에 호버되면 정지 & 벗어나면 재생
     $("#eventBanner").hover(
         function () {
             window.clearInterval(timerId);

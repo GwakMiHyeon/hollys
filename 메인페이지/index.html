@@ -14,6 +14,9 @@
     </head>
     <body>
         <header id="header">
+        
+            <button id="mobile_menuButton"><img src="../메인페이지/images/menu_icon.png" alt="메뉴버튼 이미지"></button>
+
             <div class="wrap">
                 <div id="quickBanner">
                     <ul id="startUp">
@@ -35,8 +38,8 @@
                         <a href="index.html"><img src="../메인페이지/images/logo.png" alt="로고"></a>
                     </div>
                 </div><!-- /#quickBanner -->    
-            </div><!-- /.wrap (width:1200px) -->
-
+            </div><!-- /.wrap(width:1200px) -->
+            
             <nav id="nav">
                 <ul id="menu">
                     <li>
@@ -101,8 +104,15 @@
                 <li><img src="../메인페이지/images/mainBanner2.jpg" alt="이미지슬라이드2"></li>
                 <li><img src="../메인페이지/images/mainBanner3.jpg" alt="이미지슬라이드3"></li>
             </ul>
-            <button>〈</button>
-            <button>〉</button>
+            
+            <ul id="mobile_slide">
+                <li><img src="../메인페이지/images/mobile_mainBanner1.jpg" alt="모바일이미지슬라이드1"></li>
+                <li><img src="../메인페이지/images/mobile_mainBanner2.jpg" alt="모바일이미지슬라이드2"></li>
+                <li><img src="../메인페이지/images/mobile_mainBanner3.jpg" alt="모바일이미지슬라이드3"></li>
+            </ul>
+
+            <button id="prev">〈</button>
+            <button id="next">〉</button>
         </div><!-- /#imgSlide -->
 
         <article id="content">
@@ -133,6 +143,15 @@
                         <img src="../메인페이지/images/coffee_vanillaDelight.png" alt="바닐라딜라이트">
                         <p>바닐라딜라이트</p>
                     </div>
+
+                    <div id="mobile_hollysMall">
+                        <img src="../메인페이지/images/mobile_hollysMall.png" alt="mobile_hollysMall">
+                        <ul>
+                            <li><a href="../서브페이지/index.html">커피</a></li>
+                            <li><a href="#">음료</a></li>
+                            <li><a href="#">음식</a></li>
+                        </ul>
+                    </div>
                 </div><!-- HOLLYS Mall -->
 
                 <div id="membership">
@@ -158,27 +177,29 @@
                         </ol> -->
                     </div><!-- eventBanner -->
 
-                    <div class="notice">
-                        <p>NEWS</p>
-                        <p>+</p>
-                        <ul>
-                            <li><a href="#notice">[제휴 안내] 할리스 x LG유플러스 '대한민국동행세일' 서비스 이용 안내</a><span>2022-09-05</span></li>    
-                            <li><a href="#notice">[제휴 안내] 할리스 x LGU+ '장기고객 한가위 이벤트' 서비스 이용 안내</a><span>2022-08-12</span></li>    
-                            <li><a href="#notice">[제휴 안내] 할리스 x KT '8월 나의 초이스' 서비스 이용 안내</a><span>2022-08-09</span></li>    
-                            <li><a href="#notice">[제휴 안내] SKT T멤버십 VIP Pick 프로모션 이용 안내</a><span>2022-07-26</span></li>    
-                        </ul>
-                    </div>
-                    <hr>
-                    <div class="notice">
-                        <p>NOTICE</p>
-                        <p>+</p>
-                        <ul>
-                            <li><a href="#notice">제3자 배정 유상증자 신주발행 공고</a><span>2022-05-03</span></li>    
-                            <li><a href="#notice">할리스카드 이용약관 변경 안내</a><span>2022-05-20</span></li>    
-                            <li><a href="#notice">개인정보처리방침 변경 안내</a><span>2021-12-23</span></li>    
-                            <li><a href="#notice">멤버십 이용약관 변경 안내</a><span>2021-09-23</span></li>    
-                        </ul>
-                    </div>
+                    <div id="eventInfo">
+                        <div class="notice">
+                            <p>NEWS</p>
+                            <p>+</p>
+                            <ul>
+                                <li><a href="#notice">[제휴 안내] 할리스 x LG유플러스 '대한민국동행세일' 서비스 이용 안내</a><span>2022-09-05</span></li>    
+                                <li><a href="#notice">[제휴 안내] 할리스 x LGU+ '장기고객 한가위 이벤트' 서비스 이용 안내</a><span>2022-08-12</span></li>    
+                                <li><a href="#notice">[제휴 안내] 할리스 x KT '8월 나의 초이스' 서비스 이용 안내</a><span>2022-08-09</span></li>    
+                                <li><a href="#notice">[제휴 안내] SKT T멤버십 VIP Pick 프로모션 이용 안내</a><span>2022-07-26</span></li>    
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="notice">
+                            <p>NOTICE</p>
+                            <p>+</p>
+                            <ul>
+                                <li><a href="#notice">제3자 배정 유상증자 신주발행 공고</a><span>2022-05-03</span></li>    
+                                <li><a href="#notice">할리스카드 이용약관 변경 안내</a><span>2022-05-20</span></li>    
+                                <li><a href="#notice">개인정보처리방침 변경 안내</a><span>2021-12-23</span></li>    
+                                <li><a href="#notice">멤버십 이용약관 변경 안내</a><span>2021-09-23</span></li>    
+                            </ul>
+                        </div>
+                    </div><!-- /#eventInfo -->
                 </div><!-- /#hollys_notice -->
                 
                 <div id="img_banner">
@@ -190,7 +211,7 @@
                     </div>
                     <img src="../메인페이지/images/banner_b2b.jpg" alt="이미지 배너">
                 </div>
-            </div><!-- /.wrap (width:1200px) -->
+            </div><!-- /.wrap(width:1200px) -->
         </article><!-- /#content -->
         
         
@@ -221,7 +242,7 @@
                     <p>주소 : 서울특별시 종로구 율곡로 88 삼환빌딩 8층 (운니동) 대표전화 : 02-2188-7100 (가맹문의 : 02-6350-7229)</p>
                     <p>COPYRIGHT (C) KG HOLLYS F&amp;B. All Rights Reserved.</p>
                 </div><!-- /#copyright -->
-            </div><!-- /.wrap (width:1200px) -->
+            </div><!-- /.wrap(width:1200px) -->
         </footer><!-- /#footer -->
     </body>
 </html>

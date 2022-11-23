@@ -1,4 +1,4 @@
-body {color: #333}
+body {color: #333;}
 .wrap {
     width: 1200px;
     margin: 0 auto;
@@ -10,6 +10,8 @@ body {color: #333}
     font-size: 14px;
 }
 #quickBanner::after { content: ""; display: block; clear: both; }
+
+#mobile_menuButton {display: none;}
 
 /* -------------------- startUp -------------------- */
 #startUp {float: left;}
@@ -145,14 +147,16 @@ body {color: #333}
     top: 50%;
     transform: translateY(-50%);
 }
-#imgSlide > button:nth-child(2) {left: 20px;}
-#imgSlide > button:nth-child(3) {right: 20px;}
+#prev {left: 20px;}
+#next {right: 20px;}
 
 #imgSlide > button:hover {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10%;
 }
+
+#mobile_slide {display: none;}
 
 
 /* content */
@@ -193,6 +197,8 @@ body {color: #333}
 .push_menu:nth-child(4) > p:nth-child(1) {background-color: #ba000c; color: white;}
 .push_menu:nth-child(5) > p:nth-child(1) {background-color: #ba000c; color: white;}
 
+#mobile_hollysMall {display: none;}
+
 
 /* -------------------- membership -------------------- */
 #membership {margin-top: 70px;}
@@ -202,12 +208,12 @@ body {color: #333}
 /* hollys notice */
 #hollys_notice {margin-top: 30px;}
 #hollys_notice::after {content: ""; clear: both; display: block;}
-#hollys_notice > hr {width: 500px; margin: 0 auto; background: #ddd;}
 
 /* -------------------- eventBanner -------------------- */
 #eventBanner {
     width: 600px;
-    overflow: hidden; float: left;
+    overflow: hidden; 
+    float: left;
     
     position: relative; /* 이벤트배너 한자리에 배치 */
 }
@@ -253,13 +259,18 @@ body {color: #333}
 #indicator > li > span {display: none;}
 
 
-/* -------------------- notice -------------------- */
-.notice {
+/* -------------------- eventInfo -------------------- */
+#eventInfo {
     float: right; 
-    width: 540px; 
+    width: 50%;
+}
+#eventInfo > hr {width: 500px; margin: 0 auto; background: #ddd;}
+
+.notice {
     padding: 30px;
     cursor: pointer;
 }
+.notice::after {content: ""; display: block; clear: both;}
 
 .notice > p {
     display: inline-block;
@@ -297,7 +308,7 @@ body {color: #333}
 /* -------------------- img banner -------------------- */
 #img_banner {
     margin-top: 50px; 
-    position: relative; /*#store의 검색창 absolute로 인해 지정함(근데 왜 position은 '#img_banner > img:nth-child(2)'에서 안먹힐까?)*/
+    position: relative;
 }
 #img_banner > img {display: inline-block;}
 #img_banner > img:nth-child(2) {padding: 0 23px;}
@@ -377,3 +388,240 @@ input::-moz-placeholder {color: #999;}
 #copyright {color: #888;}
 #copyright > p {line-height: 20px;}
 #copyright > p:nth-child(3) {padding: 15px 0 30px 0;}
+
+
+/* -------------------- @media 모바일 -------------------- */
+@media (max-width: 767px) {
+    /* header */
+    #mobile_menuButton {
+        border: none;
+        background: none;
+        display: block;
+        cursor: pointer;
+
+        position: absolute;
+        top: 30px; left: 30px;
+    }
+    #mobile_menuButton > img {width: 30px;}
+
+    #quickBanner {width: 100vw; margin-top: 0;}
+    
+    /* startup */
+    #startUp {display: none;}
+    
+    /* login */
+    #login {float: right; display: none;}
+    #login > li {float: left;}
+
+    #login > li > a {
+        color: inherit;
+        text-decoration: none;
+        padding-right: 3px; 
+        line-height: 30px;
+    }
+
+    #login > li:nth-child(2) {padding: 0 10px;}
+    #login > li:nth-child(4) {padding-left: 10px;}
+
+    #logo {
+        width: 100px;
+        margin: 0 auto;
+    }
+    #logo > img {width: 100px;}
+
+    
+    #logo {
+        width: 100px;
+        margin: 30px auto;
+    }
+    
+    
+    /* nav(menu) */
+    #nav {
+        margin-top: 0;
+        position: relative; /* menu배치 */
+        /* display: none; */
+    }
+
+    #menu {
+        background-color:rgba(0, 0, 0, 0.8);
+        /* margin: 0; */
+        /* text-align: left; */
+        /* height: 80vh; */
+        z-index: 9;
+
+        position: absolute;
+        top: -171px; left: 0;
+    }
+
+    #menu > li {
+        width: 250px;
+        float: none; 
+        
+        position: relative; /* 서브메뉴 position으로 인해 지정 */
+    }
+    #menu > li:first-child {margin-top: 70px;}
+    #menu > li:last-child {margin-bottom: 70px;}
+    #menu > li:not(:last-child) {border-bottom: 1px solid #fff; box-sizing: border-box;}
+    
+    #menu > li > a {color: #fff;}
+
+
+    /* submenu */
+    .submenu {
+        position: absolute;
+        top: 0; left: 100%;
+        z-index: 10;
+        /* display: none; */
+    }
+
+    .submenu > li > a {
+        color: #333;
+        text-decoration: none;
+        padding: 15px 0;
+        display: block;
+    }
+
+    .submenu > li > a:hover {background-color: #ddd;}
+    #submenu_bg{display: none;}
+
+
+    /* imgSlide */
+    #imgSlide {width: 767px;}
+    
+    #mobile_slide {width: 2301px; display: block;}
+    #mobile_slide > li{
+        float: left;
+        width: 767px;
+    }
+    #mobile_slide > li > img {
+        width: 100%;
+        display: block;
+    }
+
+    #imgSlide > button {
+        font-size: 50px;
+        padding: 20px 35px;
+    }
+    #prev {left: 40px;}
+    #next {right: 40px;}
+    
+    #slide {display: none;}
+
+
+    /* hollysMall */
+    #hollysMall {
+        margin-top: 5px;
+        width: 100vw;
+    }
+    .push_menu {display: none;}
+    
+    #mobile_hollysMall {display: block; position: relative;}
+    
+    #mobile_hollysMall > ul {
+        position: absolute;
+        bottom: 50px; left: 50%;
+        transform: translateX(-50%);
+    }
+    #mobile_hollysMall > ul > li {
+        border: 1px solid #fff; 
+        box-sizing: border-box;
+        margin-bottom: 13px;
+    }
+    #mobile_hollysMall > ul > li > a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: 500px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    #mobile_hollysMall > ul > li > a:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: black;
+        transition-duration: 200ms;
+    }
+
+
+    /* membership */
+    #membership {width: 100vw; margin-top: 5px;}
+    #membership > img {width: 100%;}
+    #membership > img:nth-child(1) {margin-right: 0;}
+
+
+    /* eventBanner */
+    #hollys_notice {margin-top: 5px;}
+
+    #eventBanner {width: 100vw; float: none;}
+    #eventBanner > ul {width: 400%;}
+    #eventBanner > ul > li > img {width: 767px;}
+
+    #indicator > li {
+        margin: 0 4px;
+        width: 20px;
+        height: 20px;
+    }
+    
+
+    /* notice */
+    #eventInfo {
+        float: none; 
+        width: 100vw;
+    }
+    #eventInfo > hr {width: 80vw;}
+    
+    .notice {width: 90vW;}
+
+    
+    /* img banner */
+    #img_banner {
+        width: 100vw;
+        margin-top: 0; 
+    }
+    #img_banner > img {
+        width: 70vw; 
+        display: block;
+        margin: 5px auto;
+    }
+    #img_banner > img:nth-child(2) {padding: 0;}
+
+    #store {
+        width: 290px;
+        height: 40px;
+        
+        position: absolute;
+        bottom: 40%; left: 30%;
+    }
+    #store > input {
+        font-size: 18px;
+        padding: 10px;
+    }
+    #store > button {padding-top: 7px;}
+
+
+    /* footer */
+    #footer {padding: 40px 0;}
+    #footer > .wrap {
+        width: 100vw;
+        background-position: top center;
+    }
+    
+    #f_menu, #copyright {width: 85%; margin: 0 auto; text-align: center;}
+    #f_menu {padding-top: 140px;}
+    
+    #f_menu > li {
+        float: none; 
+        display: inline-block;
+        line-height: 35px; 
+    }
+    #f_menu > li:not(:last-child) {margin-right: 15px;}
+    #f_menu > li:nth-child(even) {display: none;}
+
+    #copyright {
+        color: #888;
+        padding-top: 30px;
+    }
+    #copyright > p {line-height: 27px;}
+    
+} /* @media (max-width: 767px) */
